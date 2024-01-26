@@ -8,6 +8,10 @@ export default function Page() {
   const { response: posts, loading: postsLoading } = useAxios<Post[]>({
     method: "GET",
     url: "/news",
+    params: {
+      sortBy: "createdAt",
+      order: "desc",
+    },
   });
 
   return (
@@ -32,7 +36,6 @@ export default function Page() {
                     views={post.views}
                     name={post.name}
                     createdAt={post.createdAt}
-                    id={post.id}
                   />
                   <Box display="flex" justifyContent="center" my="10px">
                     <Button size="small" href={`/posts/${post.id}`}>
