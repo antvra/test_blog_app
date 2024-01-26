@@ -1,36 +1,81 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# **Тестовое задание для Frontend-разработчика в продуктовую команду**
 
-## Getting Started
+# Требования
 
-First, run the development server:
+Разработать интерфейс приложения, состоящий из двух страниц.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Главная страница
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Показывает новости в виде списка, отсортированного по дате – самые свежие новости должны находиться сверху.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Каждая новость содержит:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- id
+- дату публикации (createdAt)
+- название (name)
+- количество просмотров (views)
+- обложку/картинку (image)
+- имя автора (author)
+- текст (text)
 
-## Learn More
+По клику на новость открывается страница этой новости.
 
-To learn more about Next.js, take a look at the following resources:
+## Страница новости
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Показывает страницу новости, которая содержит поля, описанные выше.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+К каждой новости на страницу сразу же подгружаются комментарии.
 
-## Deploy on Vercel
+Каждый комментарий содержит:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- id
+- id новости (newsId)
+- дату публикации (createdAt)
+- аватар (avatar)
+- имя автора (author)
+- текст (text)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+На странице должна быть кнопка для возврата к списку новостей.
+
+## Endpoints
+
+**Получить список новостей:**
+
+GET
+
+https://63c652e7dcdc478e15bf1f66.mockapi.io/news
+
+**Получить конкретную новость:**
+
+GET
+
+https://63c652e7dcdc478e15bf1f66.mockapi.io/news/:id
+
+**Получить список комментариев для новости:**
+
+GET
+
+https://63c652e7dcdc478e15bf1f66.mockapi.io/news/:id/comments
+
+### Дополнительно:
+
+**Сортировка**
+
+- /news?sortBy=createdAt&order=desc
+- alternatively you can use sortby, orderBy, or orderby
+- note: if you omit order parameter, the default order will be asc
+
+## Технические требования
+
+- разработать приложение с помощью React/Redux/TypeScript/React Hooks
+- использовать методы API (которые указаны выше)
+- создать роутинг приложения с использованием React Router
+- использовать любой UI (как готовые библиотеки/фреймворки, так и чистый css)
+- визуально аккуратное/красивое приложение (на ваш взгляд)
+- продуманная архитектура проекта
+- выложить проект в GitHub-репозиторий
+
+## Опциональные требования (по желанию)
+
+- использовать jss | styled-components | etc.
+- unit-tests
