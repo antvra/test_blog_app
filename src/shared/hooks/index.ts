@@ -1,1 +1,1 @@
-export { useAxios } from "./useAxios";
+export { useAxios } from './useAxios'

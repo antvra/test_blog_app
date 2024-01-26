@@ -1,25 +1,25 @@
-"use client";
+'use client'
 
-import { Loader, PageLayout, PostCard, CommentBlock } from "@/components";
-import { Comment, Post, useAxios } from "@/shared";
-import { Box, Button, Card } from "@mui/material";
+import { Loader, PageLayout, PostCard, CommentBlock } from '@/components'
+import { Comment, Post, useAxios } from '@/shared'
+import { Box, Button, Card } from '@mui/material'
 
 export default function Page({
   params,
 }: {
   params: {
-    postId: number;
-  };
+    postId: number
+  }
 }) {
   const { response: post, loading: postLoading } = useAxios<Post>({
-    method: "GET",
+    method: 'GET',
     url: `/news/${params.postId}`,
-  });
+  })
 
   const { response: comments, loading: commentsLoading } = useAxios<Comment[]>({
-    method: "GET",
+    method: 'GET',
     url: `/news/${params.postId}/comments`,
-  });
+  })
 
   return (
     <PageLayout>
@@ -30,10 +30,10 @@ export default function Page({
       {post && (
         <Card
           sx={{
-            height: "100%",
-            display: "flex",
-            flexDirection: "column",
-            marginBottom: "10px",
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            marginBottom: '10px',
           }}
         >
           <PostCard
@@ -57,10 +57,10 @@ export default function Page({
                 avatar={comment.avatar}
                 createdAt={comment.createdAt}
               />
-            );
+            )
           })}
         </Box>
       )}
     </PageLayout>
-  );
+  )
 }

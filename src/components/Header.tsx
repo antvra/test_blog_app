@@ -1,12 +1,12 @@
-import { AppBar, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from '@mui/material'
 
 export const Header = () => {
   return (
     <AppBar position="relative">
       <Toolbar
         sx={{
-          display: "flex",
-          justifyContent: "center",
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
         <Typography variant="h6" color="inherit" noWrap>
@@ -14,5 +14,5 @@ export const Header = () => {
         </Typography>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}

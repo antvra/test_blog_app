@@ -1,18 +1,18 @@
-"use client";
-import Grid from "@mui/material/Grid";
-import { Loader, PostCard, PageLayout } from "@/components";
-import { Post, useAxios } from "@/shared";
-import { Box, Button, Card } from "@mui/material";
+'use client'
+import Grid from '@mui/material/Grid'
+import { Loader, PostCard, PageLayout } from '@/components'
+import { Post, useAxios } from '@/shared'
+import { Box, Button, Card } from '@mui/material'
 
 export default function Page() {
   const { response: posts, loading: postsLoading } = useAxios<Post[]>({
-    method: "GET",
-    url: "/news",
+    method: 'GET',
+    url: '/news',
     params: {
-      sortBy: "createdAt",
-      order: "desc",
+      sortBy: 'createdAt',
+      order: 'desc',
     },
-  });
+  })
 
   return (
     <PageLayout>
@@ -24,9 +24,9 @@ export default function Page() {
               <Grid item key={post.id} xs={12} sm={6} md={4}>
                 <Card
                   sx={{
-                    height: "100%",
-                    display: "flex",
-                    flexDirection: "column",
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
                   }}
                 >
                   <PostCard
@@ -44,10 +44,10 @@ export default function Page() {
                   </Box>
                 </Card>
               </Grid>
-            );
+            )
           })}
         </Grid>
       )}
     </PageLayout>
-  );
+  )
 }
