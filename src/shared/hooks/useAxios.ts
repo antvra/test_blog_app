@@ -29,7 +29,6 @@ export const useAxios = <T>(
 
   useEffect(() => {
     fetchData(axiosParams)
-  }, []) // execute once only
-
+  }, [])
   return { response, error, loading }
 }
