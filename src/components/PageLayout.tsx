@@ -1,6 +1,6 @@
 import { Container } from '@mui/material'
 import { Header } from '.'
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 export const PageLayout = ({ children }: { children: ReactNode }) => {
   return (
