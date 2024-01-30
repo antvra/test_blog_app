@@ -1,3 +1,4 @@
+import type { QueryClientConfig } from 'react-query'
 import axiosInstance from './service'
 
 const pathSeparator = '/'
@@ -13,4 +14,4 @@ const queryClientConfiguration = {
   },
 }
 
-export default queryClientConfiguration
+export default queryClientConfiguration as QueryClientConfig

@@ -2,15 +2,12 @@
 
 import queryClientConfiguration from '@/shared/services/queryClient'
 import { useState } from 'react'
-import {
-  QueryClientProvider,
-  QueryClient,
-  QueryClientConfig,
-} from 'react-query'
+import type { ReactNode } from 'react'
+import { QueryClientProvider, QueryClient } from 'react-query'
 
-const ReactQueryProvider = ({ children }: { children: React.ReactNode }) => {
+const ReactQueryProvider = ({ children }: { children: ReactNode }) => {
   const [queryClient] = useState(
-    () => new QueryClient(queryClientConfiguration as QueryClientConfig)
+    () => new QueryClient(queryClientConfiguration)
   )
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
