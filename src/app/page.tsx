@@ -7,7 +7,9 @@ import { Box, Button, Card } from '@mui/material'
 import { useQuery } from 'react-query'
 
 export default function Page() {
-  const { data: posts, isLoading: isPostsLoading } = useQuery<Post[]>(['/news'])
+  const { data: posts, isLoading: isPostsLoading } = useQuery<Post[]>([
+    '/news?sortBy=createdAt&order=desc',
+  ])
 
   return (
     <PageLayout>
