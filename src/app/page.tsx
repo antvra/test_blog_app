@@ -5,6 +5,7 @@ import { Loader, PostCard, PageLayout } from '@/components'
 import type { Post } from '@/shared/types'
 import { Box, Button, Card } from '@mui/material'
 import { useQuery } from 'react-query'
+import { unique } from '@/shared/lib'
 
 export default function Page() {
   const { data: posts, isLoading: isPostsLoading } = useQuery<Post[]>([
@@ -16,7 +17,7 @@ export default function Page() {
       {isPostsLoading && <Loader />}
       {posts && (
         <Grid container spacing={4}>
-          {posts.map((post) => {
+          {unique(posts, 'id').map((post) => {
             return (
               <Grid item key={post.id} xs={12} sm={6} md={4}>
                 <Card
