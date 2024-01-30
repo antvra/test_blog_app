@@ -8,6 +8,7 @@ export const PageLayout = ({ children }: { children: ReactNode }) => {
       <Header />
       <Container sx={{ py: 8 }} maxWidth="md">
         {children}
+        <span>2</span>
       </Container>
     </main>
   )
