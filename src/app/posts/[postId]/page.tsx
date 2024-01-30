@@ -1,8 +1,9 @@
 'use client'
 
 import { Loader, PageLayout, PostCard, CommentBlock } from '@/components'
-import { Comment, Post, useAxios } from '@/shared'
+import type { Comment, Post } from '@/shared/types'
 import { Box, Button, Card } from '@mui/material'
+import { useQuery } from 'react-query'
 
 export default function Page({
   params,
@@ -11,22 +12,19 @@ export default function Page({
     postId: number
   }
 }) {
-  const { response: post, loading: postLoading } = useAxios<Post>({
-    method: 'GET',
-    url: `/news/${params.postId}`,
-  })
-
-  const { response: comments, loading: commentsLoading } = useAxios<Comment[]>({
-    method: 'GET',
-    url: `/news/${params.postId}/comments`,
-  })
+  const { data: post, isLoading: isPostLoading } = useQuery<Post>([
+    `/news/${params.postId}`,
+  ])
+  const { data: comments, isLoading: isCommentsLoading } = useQuery<Comment[]>([
+    '/comments',
+  ])
 
   return (
     <PageLayout>
       <Box display="flex" justifyContent="center">
         <Button href="/">На домашнюю страницу</Button>
       </Box>
-      {(postLoading || commentsLoading) && <Loader />}
+      {(isPostLoading || isCommentsLoading) && <Loader />}
       {post && (
         <Card
           sx={{

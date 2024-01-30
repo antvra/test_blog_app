@@ -1,22 +1,17 @@
 'use client'
+
 import Grid from '@mui/material/Grid'
 import { Loader, PostCard, PageLayout } from '@/components'
-import { Post, useAxios } from '@/shared'
+import type { Post } from '@/shared/types'
 import { Box, Button, Card } from '@mui/material'
+import { useQuery } from 'react-query'
 
 export default function Page() {
-  const { response: posts, loading: postsLoading } = useAxios<Post[]>({
-    method: 'GET',
-    url: '/news',
-    params: {
-      sortBy: 'createdAt',
-      order: 'desc',
-    },
-  })
+  const { data: posts, isLoading: isPostsLoading } = useQuery<Post[]>(['/news'])
 
   return (
     <PageLayout>
-      {postsLoading && <Loader />}
+      {isPostsLoading && <Loader />}
       {posts && (
         <Grid container spacing={4}>
           {posts.map((post) => {

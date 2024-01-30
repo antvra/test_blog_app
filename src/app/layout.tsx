@@ -1,3 +1,4 @@
+import ReactQueryProvider from '@/providers/ReactQueryProvider'
 import { CssBaseline } from '@mui/material'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -17,7 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <CssBaseline />
-      <body className={inter.className}>{children}</body>
+      <ReactQueryProvider>
+        <body className={inter.className}>{children}</body>
+      </ReactQueryProvider>
     </html>
   )
 }

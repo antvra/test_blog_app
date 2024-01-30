@@ -3,7 +3,7 @@ import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye'
 import PersonIcon from '@mui/icons-material/Person'
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder'
 import { format } from 'date-fns'
-import { Post } from '@/shared'
+import type { Post } from '@/shared/types'
 
 export const PostCard = ({
   author,

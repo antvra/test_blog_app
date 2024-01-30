@@ -1,7 +1,7 @@
 import { Avatar, Typography, Box } from '@mui/material'
 import QueryBuilderIcon from '@mui/icons-material/QueryBuilder'
 import { format } from 'date-fns'
-import { Comment } from '@/shared'
+import type { Comment } from '@/shared/types'
 
 export const CommentBlock = ({
   author,
