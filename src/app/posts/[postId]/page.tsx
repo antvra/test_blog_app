@@ -17,7 +17,7 @@ export default function Page({
     `/news/${params.postId}`,
   ])
   const { data: comments, isLoading: isCommentsLoading } = useQuery<Comment[]>([
-    '/comments',
+    `/news/${params.postId}/comments`,
   ])
 
   if (isPostLoading || isCommentsLoading) {

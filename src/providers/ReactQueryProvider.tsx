@@ -1,6 +1,6 @@
 'use client'
 
-import queryClientConfiguration from '@/shared/services/queryClient'
+import { queryClientConfiguration } from '@/shared/services'
 import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { QueryClientProvider, QueryClient } from 'react-query'
