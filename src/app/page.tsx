@@ -12,9 +12,16 @@ export default function Page() {
     '/news?sortBy=createdAt&order=desc',
   ])
 
+  if (isPostsLoading) {
+    return (
+      <PageLayout>
+        <Loader />
+      </PageLayout>
+    )
+  }
+
   return (
     <PageLayout>
-      {isPostsLoading && <Loader />}
       {posts && (
         <Grid container spacing={4}>
           {unique(posts, 'id').map((post) => {

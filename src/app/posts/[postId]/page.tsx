@@ -2,7 +2,7 @@
 
 import { Loader, PageLayout, PostCard, CommentBlock } from '@/components'
 import type { Comment, Post } from '@/shared/types'
-import { Box, Button, Card } from '@mui/material'
+import { Box, Button, Card, Typography } from '@mui/material'
 import { useQuery } from 'react-query'
 
 export default function Page({
@@ -19,44 +19,63 @@ export default function Page({
     '/comments',
   ])
 
+  if (isPostLoading || isCommentsLoading) {
+    return (
+      <PageLayout>
+        <Loader />
+      </PageLayout>
+    )
+  }
   return (
     <PageLayout>
-      <Box display="flex" justifyContent="center">
-        <Button href="/">На домашнюю страницу</Button>
+      <Box display="flex" flexDirection="column" rowGap="10px">
+        <Box display="flex" justifyContent="center">
+          <Button href="/">На домашнюю страницу</Button>
+        </Box>
+        {post && (
+          <Card
+            sx={{
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              marginBottom: '10px',
+            }}
+          >
+            <PostCard
+              author={post.author}
+              createdAt={post.createdAt}
+              image={post.image}
+              name={post.name}
+              text={post.text}
+              views={post.views}
+            />
+          </Card>
+        )}
       </Box>
-      {(isPostLoading || isCommentsLoading) && <Loader />}
-      {post && (
-        <Card
-          sx={{
-            height: '100%',
-            display: 'flex',
-            flexDirection: 'column',
-            marginBottom: '10px',
-          }}
-        >
-          <PostCard
-            author={post.author}
-            createdAt={post.createdAt}
-            image={post.image}
-            name={post.name}
-            text={post.text}
-            views={post.views}
-          />
-        </Card>
-      )}
       {comments && (
-        <Box display="flex" flexDirection="column" rowGap="10px" p="20px">
-          {comments.map((comment) => {
-            return (
-              <CommentBlock
-                key={comment.id}
-                text={comment.text}
-                author={comment.author}
-                avatar={comment.avatar}
-                createdAt={comment.createdAt}
-              />
-            )
-          })}
+        <Box display="flex" flexDirection="column" rowGap="10px">
+          <Typography variant="h2">Комментарии</Typography>
+          <Box
+            display="flex"
+            flexDirection="column"
+            rowGap="10px"
+            p="20px"
+            height="200px"
+            overflow="scroll"
+            border="1px solid #e6e6e6"
+          >
+            {comments.map((comment) => {
+              return (
+                <CommentBlock
+                  key={comment.id}
+                  text={comment.text}
+                  author={comment.author}
+                  avatar={comment.avatar}
+                  createdAt={comment.createdAt}
+                />
+              )
+            })}
+          </Box>
         </Box>
       )}
     </PageLayout>
