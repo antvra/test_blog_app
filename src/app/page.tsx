@@ -6,6 +6,7 @@ import type { Post } from '@/shared/types'
 import { Box, Button, Card } from '@mui/material'
 import { useQuery } from 'react-query'
 import { unique } from '@/shared/lib'
+import Link from 'next/link'
 
 export default function Page() {
   const { data: posts, isLoading: isPostsLoading } = useQuery<Post[]>([
@@ -37,15 +38,15 @@ export default function Page() {
                   <PostCard
                     author={post.author}
                     image={post.image}
-                    text={post.text}
+                    text={post.text.slice(0, 100).trim() + '...'}
                     views={post.views}
                     name={post.name}
                     createdAt={post.createdAt}
                   />
                   <Box display="flex" justifyContent="center" my="10px">
-                    <Button size="small" href={`/posts/${post.id}`}>
-                      Открыть новость
-                    </Button>
+                    <Link href={`/posts/${post.id}`}>
+                      <Button size="small">Открыть новость</Button>
+                    </Link>
                   </Box>
                 </Card>
               </Grid>

@@ -3,6 +3,7 @@
 import { Loader, PageLayout, PostCard, CommentBlock } from '@/components'
 import type { Comment, Post } from '@/shared/types'
 import { Box, Button, Card, Typography } from '@mui/material'
+import Link from 'next/link'
 import { useQuery } from 'react-query'
 
 export default function Page({
@@ -30,7 +31,9 @@ export default function Page({
     <PageLayout>
       <Box display="flex" flexDirection="column" rowGap="10px">
         <Box display="flex" justifyContent="center">
-          <Button href="/">На домашнюю страницу</Button>
+          <Link href="/">
+            <Button>На домашнюю страницу</Button>
+          </Link>
         </Box>
         {post && (
           <Card
